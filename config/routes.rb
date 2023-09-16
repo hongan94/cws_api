@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount Api::Base, at: "/"
+  mount API::Base, at: "/"
 end

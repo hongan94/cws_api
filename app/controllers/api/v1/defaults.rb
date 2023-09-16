@@ -1,4 +1,4 @@
-module Api
+module API
   module V1
     module Defaults
       extend ActiveSupport::Concern
@@ -10,23 +10,42 @@ module Api
         format :json
 
         helpers do
-          def permitted_params
-            @permitted_params ||= declared(params,
-                                           include_missing: false)
+          def authenticate!
+            error!('Please log in', :unauthorized) unless logged_in?
           end
 
-          def logger
-            Rails.logger
+          def logged_in?
+            !!current_user
+          end
+
+          def current_user
+            if decoded_token
+              admin_id = decoded_token[0]['admin_id']
+              @admin = Admin.find_by(id: admin_id)
+            end
+          end
+
+          def decoded_token
+            if auth_header
+              token = auth_header
+              begin
+                JWT.decode(token, 'cd817ce2dab72589691e2b889a87bd0a', true,
+                           algorithm: 'HS256')
+              rescue JWT::DecodeError
+                nil
+              end
+            end
+          end
+
+          def auth_header
+            request.headers['Authorization']
+          end
+
+          def encode_token(payload)
+            JWT.encode(payload, 'cd817ce2dab72589691e2b889a87bd0a')
           end
         end
 
-        rescue_from ActiveRecord::RecordNotFound do |e|
-          error_response(message: e.message, status: 404)
-        end
-
-        rescue_from ActiveRecord::RecordInvalid do |e|
-          error_response(message: e.message, status: 422)
-        end
       end
     end
   end

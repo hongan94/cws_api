@@ -1,35 +1,49 @@
-module Api
+module API
   module V1
     class Admins < Grape::API
-      version 'v1', using: :path
+      include API::V1::Defaults
+
+      before do
+        unless env['api.endpoint'].options[:path].join('/') == 'login'
+          authenticate!
+        end
+      end
 
       resource :admins do
         desc 'Get list admins'
         get do
           @admins = Admin.all
-          present @admins, with: Entities::V1::AdminFormat
+          present @admins, with: API::Entities::V1::AdminFormat
         end
 
         desc 'Create admin'
         params do
-          requires :name, type: String
-          requires :quantity, type: Integer
-          requires :price, type: Integer
+          requires :fullname, type: String
+          requires :password, type: String
+          requires :phone, type: String
+          requires :email, type: String
+          requires :address, type: String
+          requires :gender, type: String
         end
         post do
-          @product = Admin.create!(params)
-          present @product, with: Entities::V1::AdminFormat
+          @admin = Admin.new(params)
+          if @admin.save
+            @token = encode_token(admin_id: @admin.id)
+            { admin: @admin, jwt: @token }
+          else
+            error!('Failed to create user', :not_acceptable)
+          end
         end
 
         route_param :id do
           before do
-            @product = Admin.find(params[:id])
+            @admin = Admin.find(params[:id])
           end
 
           desc 'Show a admin'
           get do
-            @product
-            present @product, with: Entities::V1::ProductFormat
+            @admin
+            present @admin, with: Entities::V1::ProductFormat
           end
 
           desc 'Update a admin'
@@ -40,8 +54,8 @@ module Api
             requires :price, type: Integer
           end
           patch do
-            @product.update(params)
-            present @product, with: Entities::V1::ProductFormat
+            @admin.update(params)
+            present @admin, with: Entities::V1::ProductFormat
           end
 
           desc 'Delete a admin'
@@ -49,7 +63,22 @@ module Api
             requires :id, type: String
           end
           delete do
-            @product.destroy
+            @admin.destroy
+          end
+        end
+
+        desc 'login'
+        params do
+          requires :password, type: String
+          optional :email, type: String, desc: 'User email address'
+          optional :phone, type: String, desc: 'User phone number'
+        end
+        post 'login' do
+          @admin = Admin.where("email = ? OR phone = ?", params[:email], params[:phone]).first
+          if @admin && @admin.authenticate(params[:password])
+            present jwt_token: encode_token({admin_id: @admin.id})
+          else
+            error!('Mật khẩu hoặc tài khoản không đúng', 401)
           end
         end
       end
