@@ -8,6 +8,8 @@ module API
         expose :phone
         expose :email
         expose :address
+        expose :role
+        expose :status
       end
     end
   end

@@ -1,0 +1,16 @@
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/stringio-3.1.0/ext/stringio
+/Users/phamhongan/.rvm/rubies/ruby-2.7.8/bin/ruby -I /Users/phamhongan/.rvm/rubies/ruby-2.7.8/lib/ruby/2.7.0 -r ./siteconf20240221-50654-gr7zbi.rb extconf.rb
+creating Makefile
+
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/stringio-3.1.0/ext/stringio
+make "DESTDIR=" clean
+
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/stringio-3.1.0/ext/stringio
+make "DESTDIR="
+compiling stringio.c
+linking shared-object stringio.bundle
+ld: warning: -undefined dynamic_lookup may not work with chained fixups
+
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/stringio-3.1.0/ext/stringio
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 stringio.bundle ./.gem.20240221-50654-1bxybwc

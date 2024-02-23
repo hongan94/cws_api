@@ -1,0 +1,16 @@
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+/Users/phamhongan/.rvm/rubies/ruby-2.7.8/bin/ruby -I /Users/phamhongan/.rvm/rubies/ruby-2.7.8/lib/ruby/2.7.0 -r ./siteconf20240221-50654-7ubbiy.rb extconf.rb
+creating Makefile
+
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+ld: warning: -undefined dynamic_lookup may not work with chained fixups
+
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 websocket_mask.bundle ./.gem.20240221-50654-1djlwkt

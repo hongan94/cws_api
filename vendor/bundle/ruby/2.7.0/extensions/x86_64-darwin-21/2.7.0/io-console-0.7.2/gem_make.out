@@ -1,0 +1,26 @@
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/io-console-0.7.2/ext/io/console
+/Users/phamhongan/.rvm/rubies/ruby-2.7.8/bin/ruby -I /Users/phamhongan/.rvm/rubies/ruby-2.7.8/lib/ruby/2.7.0 -r ./siteconf20240221-50654-rbq7p3.rb extconf.rb
+checking for rb_io_path()... no
+checking for rb_io_descriptor()... no
+checking for rb_io_get_write_io()... yes
+checking for rb_io_closed_p()... no
+checking for rb_io_open_descriptor()... no
+checking for termios.h... yes
+checking for cfmakeraw() in termios.h... yes
+checking for sys/ioctl.h... yes
+checking for HAVE_RUBY_FIBER_SCHEDULER_H... no
+checking for rb_scheduler_timeout()... no
+creating Makefile
+
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/io-console-0.7.2/ext/io/console
+make "DESTDIR=" clean
+
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/io-console-0.7.2/ext/io/console
+make "DESTDIR="
+compiling console.c
+linking shared-object io/console.bundle
+ld: warning: -undefined dynamic_lookup may not work with chained fixups
+
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/io-console-0.7.2/ext/io/console
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 console.bundle ./.gem.20240221-50654-1mxfdxh/io

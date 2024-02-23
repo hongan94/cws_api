@@ -13,25 +13,26 @@ module API
         desc 'Get list admins'
         get do
           @admins = Admin.all
-          present @admins, with: API::Entities::V1::AdminFormat
+          { status: 'success', message: 'Thành công', data: API::Entities::V1::AdminFormat.represent(@admins) }
         end
 
         desc 'Create admin'
-        params do
-          requires :fullname, type: String
-          requires :password, type: String
-          requires :phone, type: String
-          requires :email, type: String
-          requires :address, type: String
-          requires :gender, type: String
-        end
+        # params do
+        #   requires :fullname, type: String
+        #   requires :password, type: String
+        #   requires :phone, type: String
+        #   requires :email, type: String
+        #   requires :address, type: String
+        #   requires :gender, type: String
+        #   requires :status, type: String
+        #   requires :role, type: String
+        # end
         post do
           @admin = Admin.new(params)
           if @admin.save
-            @token = encode_token(admin_id: @admin.id)
-            { admin: @admin, jwt: @token }
+            { status: 'success', message: 'Thành công', data: API::Entities::V1::AdminFormat.represent(@admins) }
           else
-            error!('Failed to create user', :not_acceptable)
+             { status: 'error', message: @admin.errors.full_messages, data: {} }
           end
         end
 

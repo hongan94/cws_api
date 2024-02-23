@@ -22,8 +22,8 @@ default: &default
 development:
   <<: *default
   database: cws_api_development
-  username: postgres
-  password: postgres
+  username: postgresql
+  password: postgresql
   host: localhost
   port: 5432
 test:

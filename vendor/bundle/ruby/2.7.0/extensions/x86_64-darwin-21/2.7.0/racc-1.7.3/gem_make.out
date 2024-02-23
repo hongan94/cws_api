@@ -1,0 +1,16 @@
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/racc-1.7.3/ext/racc/cparse
+/Users/phamhongan/.rvm/rubies/ruby-2.7.8/bin/ruby -I /Users/phamhongan/.rvm/rubies/ruby-2.7.8/lib/ruby/2.7.0 -r ./siteconf20240221-50654-19l9oyq.rb extconf.rb
+creating Makefile
+
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/racc-1.7.3/ext/racc/cparse
+make "DESTDIR=" clean
+
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/racc-1.7.3/ext/racc/cparse
+make "DESTDIR="
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+ld: warning: -undefined dynamic_lookup may not work with chained fixups
+
+current directory: /Users/phamhongan/ANPHAM/Ruby/PERSON/cws/cws_api/vendor/bundle/ruby/2.7.0/gems/racc-1.7.3/ext/racc/cparse
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 cparse.bundle ./.gem.20240221-50654-jq7alo/racc
